@@ -11,6 +11,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.util.Random;
+
 
 public class Game {
 
@@ -181,7 +183,7 @@ public class Game {
     }
 
     private void botLogic(Button[][] buttons) {
-        int i, j = 0;
+        int i, j;
         int xCount = 0, oCount = 0, count = 0;
 
         for (i = 0; i < 3; i++) {
@@ -191,6 +193,145 @@ public class Game {
             }
         }
 
+        if ((count < 4 && lastWinner == 'X') || (count < 5 && lastWinner == 'O')) {
 
+            for (i = 0; i < 3; i++) {
+                xCount = oCount = 0;
+                for (j = 0; j < 3; j++)
+                    if (buttons[i][j].getText().equals("O"))
+                        oCount++;
+                    else if (buttons[i][j].getText().equals("X"))
+                        xCount++;
+                if (oCount == 2)
+                    break;
+            }
+            if (oCount == 2 && xCount == 0) {
+                for (j = 0; j < 3; j++)
+                    if (buttons[i][j].getText().equals("")) {
+                        buttons[i][j].setText("O");
+                        buttons[i][j].setId("O");
+                    }
+            } else {
+
+                for (i = 0; i < 3; i++) {
+                    xCount = oCount = 0;
+                    for (j = 0; j < 3; j++)
+                        if (buttons[j][i].getText().equals("O"))
+                            oCount++;
+                        else if (buttons[j][i].getText().equals("X"))
+                            xCount++;
+                    if (oCount == 2)
+                        break;
+                }
+
+                if (oCount == 2 && xCount == 0) {
+                    for (j = 0; j < 3; j++)
+                        if (buttons[j][i].getText().equals("")) {
+                            buttons[j][i].setText("O");
+                            buttons[j][i].setId("O");
+                        }
+                } else {
+                    xCount = oCount = 0;
+                    for (i = 0; i < 3; i++)
+                        if (buttons[i][i].getText().equals("O"))
+                            oCount++;
+                        else if (buttons[i][i].getText().equals("X"))
+                            xCount++;
+                    if (oCount == 2 && xCount == 0) {
+                        for (i = 0; i < 3; i++)
+                            if (buttons[i][i].getText().equals("")) {
+                                buttons[i][i].setText("O");
+                                buttons[i][i].setId("O");
+                            }
+                    } else {
+                        xCount = oCount = 0;
+                        for (i = 0; i < 3; i++)
+                            if (buttons[i][2 - i].getText().equals("O"))
+                                oCount++;
+                            else if (buttons[i][2 - i].getText().equals("X"))
+                                xCount++;
+                        if (oCount == 2 && xCount == 0) {
+                            for (i = 0; i < 3; i++)
+                                if (buttons[i][2 - i].getText().equals("")) {
+                                    buttons[i][2 - i].setText("O");
+                                    buttons[i][2 - i].setId("O");
+                                }
+                        } else {
+                            for (i = 0; i < 3; i++) {
+                                xCount = oCount = 0;
+                                for (j = 0; j < 3; j++)
+                                    if (buttons[i][j].getText().equals("O"))
+                                        oCount++;
+                                    else if (buttons[i][j].getText().equals("X"))
+                                        xCount++;
+                                if (xCount == 2)
+                                    break;
+                            }
+                            if (xCount == 2 && oCount == 0) {
+                                for (j = 0; j < 3; j++)
+                                    if (buttons[i][j].getText().equals("")) {
+                                        buttons[i][j].setText("O");
+                                        buttons[i][j].setId("O");
+                                    }
+                            } else {
+                                for (i = 0; i < 3; i++) {
+                                    xCount = oCount = 0;
+                                    for (j = 0; j < 3; j++)
+                                        if (buttons[j][i].getText().equals("O"))
+                                            oCount++;
+                                        else if (buttons[j][i].getText().equals("X"))
+                                            xCount++;
+                                    if (xCount == 2)
+                                        break;
+                                }
+                                if (xCount == 2 && oCount == 0) {
+                                    for (j = 0; j < 3; j++)
+                                        if (buttons[j][i].getText().equals("")) {
+                                            buttons[j][i].setText("O");
+                                            buttons[j][i].setId("O");
+                                        }
+                                } else {
+                                    xCount = oCount = 0;
+                                    for (i = 0; i < 3; i++)
+                                        if (buttons[i][i].getText().equals("O"))
+                                            oCount++;
+                                        else if (buttons[i][i].getText().equals("X"))
+                                            xCount++;
+                                    if (xCount == 2 && oCount == 0) {
+                                        for (i = 0; i < 3; i++)
+                                            if (buttons[i][i].getText().equals("")) {
+                                                buttons[i][i].setText("O");
+                                                buttons[i][i].setId("O");
+                                            }
+                                    } else {
+                                        xCount = oCount = 0;
+                                        for (i = 0; i < 3; i++)
+                                            if (buttons[i][2 - i].getText().equals("O"))
+                                                oCount++;
+                                            else if (buttons[i][2 - i].getText().equals("X"))
+                                                xCount++;
+                                        if (xCount == 2 && oCount == 0) {
+                                            for (i = 0; i < 3; i++)
+                                                if (buttons[i][2 - i].getText().equals("")) {
+                                                    buttons[i][2 - i].setText("O");
+                                                    buttons[i][2 - i].setId("O");
+                                                }
+                                        } else {
+                                            do {
+                                                Random random = new Random();
+                                                i = random.nextInt(3);
+                                                j = random.nextInt(3);
+                                            } while (buttons[i][j].getText().equals("X") || buttons[i][j].getText().equals("O"));
+                                            buttons[i][j].setText("O");
+                                            buttons[i][j].setId("O");
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
