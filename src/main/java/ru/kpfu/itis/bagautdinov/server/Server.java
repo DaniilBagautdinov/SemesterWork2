@@ -27,11 +27,7 @@ public class Server implements ConnectionStatus {
     }
 
     @Override
-    public void onConnectionReady(ThreadConnection tcpConnection) {
-    }
-
-    @Override
-    public void onReceiveObject(ThreadConnection tcpConnection, Object object) {
+    public void onReceiveObject(Object object) {
         Integer a = (Integer) object;
         int turn;
         if (yourTurn) {

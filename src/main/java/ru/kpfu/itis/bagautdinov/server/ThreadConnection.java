@@ -21,9 +21,8 @@ public class ThreadConnection {
             @Override
             public void run() {
                 try {
-                    eventListener.onConnectionReady(ThreadConnection.this);
                     while (!thread.isInterrupted()) {
-                        eventListener.onReceiveObject(ThreadConnection.this, in.readObject());
+                        eventListener.onReceiveObject(in.readObject());
                     }
                 } catch (IOException | ClassNotFoundException e) {
                     eventListener.onException(ThreadConnection.this, e);

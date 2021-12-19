@@ -147,7 +147,7 @@ public class Game {
         }
     }
 
-    public static String checkCombinations(Button[][] buttons) {
+    public String checkCombinations(Button[][] buttons) {
         for (int i = 0; i < 3; i++) {
             if (buttons[i][0].getText().equals(buttons[i][1].getText())
                     && buttons[i][1].getText().equals(buttons[i][2].getText())

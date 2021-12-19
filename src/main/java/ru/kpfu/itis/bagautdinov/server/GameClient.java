@@ -154,12 +154,7 @@ public class GameClient extends Application implements ConnectionStatus {
     }
 
     @Override
-    public void onConnectionReady(ThreadConnection connection) {
-
-    }
-
-    @Override
-    public void onReceiveObject(ThreadConnection connection, Object object) {
+    public void onReceiveObject(Object object) {
         Integer a = (Integer) object;
         int readInt = a % 10;
         int i = readInt / 3;
