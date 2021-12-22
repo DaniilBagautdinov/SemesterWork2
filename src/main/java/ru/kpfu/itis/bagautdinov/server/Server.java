@@ -14,7 +14,7 @@ public class Server implements ConnectionStatus {
     }
 
     public Server() {
-        try (ServerSocket serverSocket = new ServerSocket(22222)) {
+        try (ServerSocket serverSocket = new ServerSocket(8080)) {
             try {
                 player1 = new ThreadConnection(this, serverSocket.accept());
                 player2 = new ThreadConnection(this, serverSocket.accept());

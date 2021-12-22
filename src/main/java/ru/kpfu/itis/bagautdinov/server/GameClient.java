@@ -40,7 +40,8 @@ public class GameClient extends Application implements ConnectionStatus {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Socket socket = new Socket("localhost", 22222);
+        //Тут нужно указать айпишник
+        Socket socket = new Socket("192.168.1.35", 8080);
         connection = new ThreadConnection(GameClient.this, socket);
 
         resultLabel = new Label();
