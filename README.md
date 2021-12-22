@@ -1,1 +1,2 @@
 # SemesterWork2
+[Trello](https://trello.com/invite/b/f4mDTDRl/30eb95e1d9ed20d2209c1707614712db/%D1%81%D0%B5%D0%BC%D0%B5%D1%81%D1%82%D1%80%D0%BE%D0%B2%D0%B0%D1%8F-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0-%E2%84%962)
